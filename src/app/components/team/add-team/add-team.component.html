@@ -1,0 +1,178 @@
+<div class="container pt-3">
+
+
+  <div class="row" *ngIf="isSuccess && isTouched">
+      <div class="col">
+        <div class="alert alert-success alert-dimissable fade show">
+          <button type="button" class="close" data-dismiss="alert">
+            <span href="#" aria-hidden="true">&times;</span>
+          </button>
+          <p>
+            Team is saved successfully.
+            <a [routerLink]="['/teams']" class="alert-link">Go Back</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!isSuccess && isTouched">
+        <div class="col">
+          <div class="alert alert-warning alert-dimissable fade show">
+            <button type="button" class="close" data-dismiss="alert">
+              <span href="#" aria-hidden="true">&times;</span>
+            </button>
+            <p>
+              Team is not saved. Error Occured.
+              <a [routerLink]="['/teams/add']" class="alert-link">Go Back</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+  <form class="form" #f="ngForm">
+    <div class="row">
+      <div class="col-4">
+            <label for="team">Team</label>
+              <input  type="text"
+                      id="team"
+                      name="team"
+                      class="form-control"
+                      [(ngModel)] = "team.team"
+                      required
+                      #teamTeam = "ngModel">
+                  <div class="help-block" *ngIf="!teamTeam.valid && teamTeam.touched">
+                      Please enter team name.
+                  </div>
+      </div>
+      <div class="col-8">
+          <label for="fullName">Full Name</label>
+          <input  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="form-control"
+                  [(ngModel)] = "team.description"
+                  required
+                  #teamfullName = "ngModel">
+                  <div class="help-block" *ngIf="!teamfullName.valid && teamfullName.touched">
+                      Please enter full name.
+                  </div>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row pt-3">
+      <div class="col-3">
+          <label for="matchesPlayed">Matches Played</label>
+          <input  type="text"
+                  id="matchesPlayed"
+                  name="matchesPlayed"
+                  class="form-control"
+                  [(ngModel)] = "team.totalPlayed"
+                  required
+                  #teammatchesPlayed = "ngModel">
+                  <div class="help-block" *ngIf="!teammatchesPlayed.valid && teammatchesPlayed.touched">
+                      Please enter valid value.
+                  </div>
+      </div>
+      <div class="col-3">
+          <label for="totalWon">Total Won</label>
+          <input  type="text"
+                  id="totalWon"
+                  name="totalWon"
+                  class="form-control"
+                  [(ngModel)] = "team.totalWon"
+                  required
+                  #teamtotalWon = "ngModel">
+                  <div class="help-block" *ngIf="!teamtotalWon.valid && teamtotalWon.touched">
+                      Please enter valid value.
+                  </div>
+      </div>
+      <div class="col-3">
+          <label for="totalLost">Total Lost</label>
+          <input  type="text"
+                  id="totalLost"
+                  name="totalLost"
+                  class="form-control"
+                  [(ngModel)] = "team.totalLost"
+                  required
+                  #teamtotalLost = "ngModel">
+                  <div class="help-block" *ngIf="!teamtotalLost.valid && teamtotalLost.touched">
+                      Please enter valid value.
+                  </div>
+      </div>
+      <div class="col-3">
+          <label for="noResult">No Result</label>
+          <input  type="text"
+                  id="noResult"
+                  name="noResult"
+                  class="form-control"
+                  [(ngModel)] = "team.noResult"
+                  required
+                  #teamnoResult = "ngModel">
+                  <div class="help-block" *ngIf="!teamnoResult.valid && teamnoResult.touched">
+                      Please enter valid value.
+                  </div>
+      </div>
+    </div>
+  <div class="row pt-3">
+    <div class="col-6">
+        <h6>Remaining Players</h6>
+        <hr>
+        <div class="list-group">
+            <div class="list-group-item" *ngFor="let player of players">
+                  <span>
+                    <input type="checkbox" class="checkbox" value="player" (click)="onSelectCheckBox(player, $event)">
+                  </span>
+                  {{ player.playerName}}
+                    <span class="text-small text-muted font-weight-light">({{player.preference}})</span>
+                </div>
+          </div>
+    </div>
+    <div class="col-6">
+        <h6>Selected Players</h6>
+        <hr>
+        <div class="list-group">
+            <div class="list-group-item" *ngFor="let teamPlayer of playerlist">
+                <button type="button" class="close" data-toggle="modal" (click)="onDeletePlayer(teamPlayer)" data-target="#deletePlayerModal">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                <div>{{ teamPlayer.playerName}}
+                    <span class="text-small text-muted font-weight-light">({{teamPlayer.preference}})</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pull-right pt-3">
+    <button type="button" class="btn btn-primary" [disabled]="!f.valid" (click)="onSaveTeam()">Save Team</button>
+  </div>
+  <div *ngIf="selectedPlayer" class="modal fade" id="deletePlayerModal"
+    role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Removing Player</h4>
+          <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Do you really want to remove {{ selectedPlayer.playerName }} from {{ team.team }}?
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" type="button" class="btn btn-primary" (click)="onDeletePlayerYes()">
+              Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+
+
+
+

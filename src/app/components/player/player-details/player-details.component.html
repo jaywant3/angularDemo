@@ -1,0 +1,46 @@
+<div class="container p-3">
+    <div class="d-block">
+      <h3 class="d-inline">Players</h3>
+      <fa class="red-icon" [size]="2" [name] = " 'plus' " [border]="false" [pull]="'right'" (click)="onAddPlayer()"></fa>
+    </div>
+    <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Player</th>
+            <th scope="col">Mat</th>
+            <th scope="col">Runs</th>
+            <th scope="col">HS</th>
+            <th scope="col">Ave</th>
+            <th scope="col">SR</th>
+            <th scope="col">Wkts</th>
+            <th scope="col">Best</th>
+            <th scope="col">100</th>
+            <th scope="col">50</th>
+            <th scope="col">4s</th>
+            <th scope="col">6s</th>
+            <th scope="col">CT</th>
+            <th scope="col">ST</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-italic" *ngFor="let player of players">
+              <th scope="row">{{ player.playerName}}
+                <span class="text-small text-muted font-weight-light">({{player.preference}})</span>
+              </th>
+              <th class="font-weight-normal">{{ player.matchesPlayed}}</th>
+              <th class="font-weight-normal">{{ player.runs }}</th>
+              <th class="font-weight-normal">{{ player.highestScore }}</th>
+              <th class="font-weight-normal">{{ player.average }}</th>
+              <th class="font-weight-normal">{{ player.strikeRate }}</th>
+              <th class="font-weight-normal">{{ player.wickets }}</th>
+              <th class="font-weight-normal">{{ player.bestWicket }}</th>
+              <th class="font-weight-normal">{{ player.centuries }}</th>
+              <th class="font-weight-normal">{{ player.fifties }}</th>
+              <th class="font-weight-normal">{{ player.fours }}</th>
+              <th class="font-weight-normal">{{ player.sixes }}</th>
+              <th class="font-weight-normal">{{ player.catches }}</th>
+              <th class="font-weight-normal">{{ player.stumpings }}</th>
+          </tr>
+        </tbody>
+      </table>
+</div>

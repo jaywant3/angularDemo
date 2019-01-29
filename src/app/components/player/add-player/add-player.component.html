@@ -1,0 +1,227 @@
+<div class="container-fluid pt-3">
+    <div class="row">
+        <div class="col-3">
+          <app-player-list></app-player-list>
+        </div>
+        <div class="col-9">
+
+          <form class="form">
+            <div class="row">
+              <div class="col-4">
+                  <label for="playerName">Player Name</label>
+                  <input type="text"
+                         class="form-control"
+                         id="playerName"
+                         name="playerName"
+                         [(ngModel)]="player.playerName"
+                         required
+                         #playerName="ngModel">
+                         <div class="help-block" *ngIf="!playerName.valid && playerName.touched">
+                          Please enter player name.
+                      </div>
+              </div>
+              <div class="col-4">
+                <label for="preference">Preference</label>
+                <select class="form-control"
+                        name="preference"
+                        id="preference"
+                        [(ngModel)]="player.preference"
+                        #preference="ngModel"
+                        required>
+                <option value="BAT">Bat</option>
+                <option value="BOWL">Bowl</option>
+                <option value="BAT&amp;WK">Bat&amp;Wk</option>
+                <option value="ALL ROUNDER">All rounder</option>
+              </select>
+              <div class="help-block" *ngIf="!preference.valid && preference.touched">
+                Please enter preference.
+              </div>
+            </div>
+            <div class="col-4">
+                <label for="matchesPlayed">Matches Played</label>
+                <input type="text"
+                       class="form-control"
+                       id="matchesPlayed"
+                       name="matchesPlayed"
+                       [(ngModel)]="player.matchesPlayed"
+                       required
+                       #matchesPlayed="ngModel">
+                  <div class="help-block" *ngIf="!matchesPlayed.valid && matchesPlayed.touched">
+                    Please enter the total number of matches played.
+                  </div>
+            </div>
+          </div>
+            <div class="form-group">
+              <div class="row pt-2">
+                <div class="col-3">
+                    <label for="runs">Runs</label>
+                    <input type="text"
+                           class="form-control"
+                           id="runs"
+                           name="runs"
+                           [(ngModel)]="player.runs"
+                           required
+                           #runs="ngModel">
+                      <div class="help-block" *ngIf="!runs.valid && runs.touched">
+                        Please enter the total runs player scored.
+                      </div>
+                </div>
+                <div class="col-3">
+                    <label for="centuries">Centuries</label>
+                    <input type="text"
+                           class="form-control"
+                           id="runs"
+                           name="centuries"
+                           [(ngModel)]="player.centuries"
+                           required
+                           #centuries="ngModel">
+                      <div class="help-block" *ngIf="!centuries.valid && centuries.touched">
+                        Please enter the total centuries.
+                      </div>
+                </div>
+                <div class="col-3">
+                    <label for="fifties">Fifties</label>
+                    <input type="text"
+                           class="form-control"
+                           id="runs"
+                           name="fifties"
+                           [(ngModel)]="player.fifties"
+                           required
+                           #fifties="ngModel">
+                      <div class="help-block" *ngIf="!fifties.valid && fifties.touched">
+                        Please enter the total fifties.
+                      </div>
+                </div>
+                <div class="col-3">
+                    <label for="highestScore">Highest Score</label>
+                    <input type="text"
+                           class="form-control"
+                           id="runs"
+                           name="highestScore"
+                           [(ngModel)]="player.highestScore"
+                           required
+                           #highestScore="ngModel">
+                      <div class="help-block" *ngIf="!highestScore.valid && highestScore.touched">
+                        Please enter Highest Score scored.
+                      </div>
+                </div>
+          </div>
+
+          <div class="row pt-2">
+            <div class="col-3">
+                <label for="strikeRate">Strike Rate</label>
+                <input type="text"
+                       class="form-control"
+                       id="runs"
+                       name="strikeRate"
+                       [(ngModel)]="player.strikeRate"
+                       required
+                       #strikeRate="ngModel">
+                  <div class="help-block" *ngIf="!strikeRate.valid && strikeRate.touched">
+                    Please enter Strike Rate player has.
+                  </div>
+            </div>
+            <div class="col-3">
+                <label for="average">Average</label>
+                <input type="text"
+                       class="form-control"
+                       id="runs"
+                       name="average"
+                       [(ngModel)]="player.average"
+                       required
+                       #average="ngModel">
+                  <div class="help-block" *ngIf="!average.valid && average.touched">
+                    Please enter Average player has.
+                  </div>
+            </div>
+            <div class="col-3">
+                <label for="fours">Fours</label>
+                <input type="text"
+                       class="form-control"
+                       id="runs"
+                       name="fours"
+                       [(ngModel)]="player.fours"
+                       required
+                       #fours="ngModel">
+                  <div class="help-block" *ngIf="!fours.valid && fours.touched">
+                    Please enter fours player had hit.
+                  </div>
+            </div>
+            <div class="col-3">
+                <label for="sixes">Sixes</label>
+                <input type="text"
+                       class="form-control"
+                       id="runs"
+                       name="sixes"
+                       [(ngModel)]="player.sixes"
+                       required
+                       #sixes="ngModel">
+                  <div class="help-block" *ngIf="!sixes.valid && sixes.touched">
+                    Please enter sixes player had hit.
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-3">
+                <label for="wickets">Wickets</label>
+                <input type="text"
+                       class="form-control"
+                       id="runs"
+                       name="wickets"
+                       [(ngModel)]="player.wickets"
+                       required
+                       #wickets="ngModel">
+                  <div class="help-block" *ngIf="!wickets.valid && wickets.touched">
+                    Please enter wickets player had hit.
+                  </div>
+            </div>
+            <div class="col-3">
+                <label for="bestWicket">Best Wicket</label>
+                <input type="text"
+                       class="form-control"
+                       id="runs"
+                       name="bestWicket"
+                       [(ngModel)]="player.bestWicket"
+                       required
+                       #bestWicket="ngModel">
+                  <div class="help-block" *ngIf="!bestWicket.valid && bestWicket.touched">
+                    Please enter best player had bowled.
+                  </div>
+            </div>
+            <div class="col-3">
+                <label for="catches">Catches</label>
+                <input type="text"
+                       class="form-control"
+                       id="runs"
+                       name="catches"
+                       [(ngModel)]="player.catches"
+                       required
+                       #catches="ngModel">
+                  <div class="help-block" *ngIf="!catches.valid && catches.touched">
+                      Please enter the count of catches.
+                  </div>
+            </div>
+            <div class="col-3">
+                <label for="stumpings">Stumpings</label>
+                <input type="text"
+                       class="form-control"
+                       id="runs"
+                       name="stumpings"
+                       [(ngModel)]="player.stumpings"
+                       required
+                       #stumpings="ngModel">
+                  <div class="help-block" *ngIf="!stumpings.valid && stumpings.touched">
+                    Please enter the count of stumpings.
+                  </div>
+            </div>
+          </div>
+        </div>
+          <div class="pull-right pt-3">
+            <button type="button" class="btn btn-primary" (click)="onSavePlayer()">Save</button>
+          </div>
+        </form>
+        </div>
+      </div>
+</div>

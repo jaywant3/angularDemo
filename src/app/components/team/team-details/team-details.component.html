@@ -1,0 +1,68 @@
+<div class="container pt-3" *ngIf="team">
+  <div class="d-block">
+    <h3 class="d-inline">{{team.team}}'s details</h3>
+  </div>
+  <hr>
+  <div>
+    <h5>{{ team.description }}</h5>
+    <div class="row">
+      <div class="col-3">
+          <app-dashboard-dock [border]="['border-primary']" [text]="['text-primary']" [title]="['Matches Played']" [value]="team.totalPlayed"></app-dashboard-dock>
+      </div>
+      <div class="col-3">
+          <app-dashboard-dock [border]="['border-success']" [text]="['text-success']" [title]="['Matches Won']" [value]="team.totalWon"></app-dashboard-dock>
+      </div>
+      <div class="col-3">
+          <app-dashboard-dock [border]="['border-danger']" [text]="['text-danger']" [title]="['Matches Lost']" [value]="team.totalLost"></app-dashboard-dock>
+      </div>
+      <div class="col-3">
+          <app-dashboard-dock [border]="['border-warning']" [text]="['text-warning']" [title]="['No result']" [value]="team.noResult"></app-dashboard-dock>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="d-block">
+      <h5 class="d-inline">Players</h5>
+  </div>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Player</th>
+        <th scope="col">Mat</th>
+        <th scope="col">Runs</th>
+        <th scope="col">HS</th>
+        <th scope="col">Ave</th>
+        <th scope="col">SR</th>
+        <th scope="col">Wkts</th>
+        <th scope="col">Best</th>
+        <th scope="col">100</th>
+        <th scope="col">50</th>
+        <th scope="col">4s</th>
+        <th scope="col">6s</th>
+        <th scope="col">CT</th>
+        <th scope="col">ST</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-italic" *ngFor="let player of playerlist">
+          <th scope="row">{{ player.playerName}}
+            <span class="text-small text-muted font-weight-light">({{player.preference}})</span>
+          </th>
+          <th class="font-weight-normal">{{ player.matchesPlayed}}</th>
+          <th class="font-weight-normal">{{ player.runs }}</th>
+          <th class="font-weight-normal">{{ player.highestScore }}</th>
+          <th class="font-weight-normal">{{ player.average }}</th>
+          <th class="font-weight-normal">{{ player.strikeRate }}</th>
+          <th class="font-weight-normal">{{ player.wickets }}</th>
+          <th class="font-weight-normal">{{ player.bestWicket }}</th>
+          <th class="font-weight-normal">{{ player.centuries }}</th>
+          <th class="font-weight-normal">{{ player.fifties }}</th>
+          <th class="font-weight-normal">{{ player.fours }}</th>
+          <th class="font-weight-normal">{{ player.sixes }}</th>
+          <th class="font-weight-normal">{{ player.catches }}</th>
+          <th class="font-weight-normal">{{ player.stumpings }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

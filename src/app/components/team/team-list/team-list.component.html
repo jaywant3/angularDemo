@@ -1,0 +1,18 @@
+<div class="container pt-3">
+      <div class="d-block">
+        <h3 class="d-inline">Teams</h3>
+        <fa class="red-icon" [size]="2" [name] = " 'plus' " [border]="false" [pull]="'right'" routerLink="/teams/add"></fa>
+      </div>
+      <hr>
+  <div class="list-group">
+    <div class="list-group-item" *ngFor="let team of teams">
+      <div class="d-block">
+        <h6 class="d-inline">{{ team.team }}</h6>
+        <fa class="red-icon" [name] = " 'trash' " [border]="false" [pull]="'right'" (click)="onDeleteTeam(team)"></fa>
+        <fa class="green-icon" [name] = " 'pencil' " [border]="false" [pull]="'right'" (click)="onEditTeam(team)"></fa>
+        <fa class="green-icon" [name] = " 'info-circle' " [border]="false" [pull]="'right'" [routerLink]="['/teams', team.id, team.team]"></fa>
+      </div>
+      <h6 class="text-muted">{{ team.description }}</h6>
+    </div>
+  </div>
+</div>

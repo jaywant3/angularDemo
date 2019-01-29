@@ -1,0 +1,23 @@
+<div class="container p-3">
+    <div class="d-block">
+      <h3 class="d-inline">Players</h3>
+      <fa class="red-icon" [size]="2" [name] = " 'plus' " [border]="false" [pull]="'right'" (click)="onAddPlayer()"></fa>
+    </div>
+    <hr>
+    <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Player</th>
+            <th scope="col">Mat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-italic" *ngFor="let player of players">
+              <th scope="row">{{ player.playerName}}
+                <span class="text-small text-muted font-weight-light">({{player.preference}})</span>
+              </th>
+              <th class="font-weight-normal">{{ player.matchesPlayed}}</th>
+          </tr>
+        </tbody>
+      </table>
+</div>
